@@ -26,21 +26,21 @@ class PartyOptionsForm extends CustomForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("Party Options");
+        parent::__construct("§gParty Options");
     }
 
     protected function onCreation(): void {
         $party = $this->session->getParty();
 
-        $this->addElement("label", new Label("Change the party options in this window."));
-        $this->addElement("public", new Toggle("Do you want to set your party public?", $party->isPublic()));
+        $this->addElement("label", new Label("§dChange the party options in this window."));
+        $this->addElement("public", new Toggle("§2Do you want to set your party public?", $party->isPublic()));
         if(ConfigGetter::isPvpDisabledOption()) {
             $this->addElement("disable_pvp", new Toggle("Do you want to disable the damage between the members of your party?", !$party->isPvp()));
         }
         if(ConfigGetter::isWorldTeleportOption()) {
             $this->addElement("leader_world_teleport", new Toggle("Do you want to teleport the members of your party when the leader moves to another world?", $party->isLeaderWorldTeleport()));
         }
-        $this->addElement("slots", new Slider("Set your maximum party slots", 1, ConfigGetter::getMaximumSlots(), $party->getSlots(), 1));
+        $this->addElement("slots", new Slider("§bSet your maximum party slots", 1, ConfigGetter::getMaximumSlots(), $party->getSlots(), 1));
     }
 
     protected function onSubmit(Player $player, FormResponse $response): void {
