@@ -35,7 +35,7 @@ class YourPartyForm extends SimpleForm {
     private function addMembersButton(): void {
         if(!$this->session->hasParty()) return;
 
-        $this->addButton(new Button("Members (" . count($this->session->getParty()->getMembers()) . ")", null, function(Player $player) {
+        $this->addButton(new Button("§gMembers (" . count($this->session->getParty()->getMembers()) . ")", null, function(Player $player) {
             $player->sendForm(new PartyMembersForm($this->session));
         }));
     }
@@ -43,19 +43,19 @@ class YourPartyForm extends SimpleForm {
     private function addPlayerInviteButton(): void {
         if(!$this->session->hasParty()) return;
 
-        $this->addButton(new Button("Invite a player", null, function(Player $player) {
+        $this->addButton(new Button("§aInvite a player", null, function(Player $player) {
             $player->sendForm(new PartyInviteForm($this->session));
         }));
     }
 
     private function addPartyOptionsButton(): void {
-        $this->addButton(new Button("Party Options", null, function(Player $player) {
+        $this->addButton(new Button("§3Party Options", null, function(Player $player) {
             $player->sendForm(new PartyOptionsForm($this->session));
         }));
     }
 
     public function addDisbandPartyButton(): void {
-        $button = new Button("Disband the party");
+        $button = new Button("§4Disband the party");
         $button->setSubmitListener(function(Player $player) {
             $party = $this->session->getParty();
 
@@ -74,7 +74,7 @@ class YourPartyForm extends SimpleForm {
     private function addLeavePartyButton(): void {
         if(!$this->session->hasParty()) return;
 
-        $button = new Button("Leave the party");
+        $button = new Button("§cLeave the party");
         $button->setSubmitListener(function(Player $player) {;
             $party = $this->session->getParty();
 
