@@ -21,7 +21,7 @@ class PartyMemberForm extends SimpleForm {
     public function __construct(Session $session, Session $member) {
         $this->session = $session;
         $this->member = $member;
-        parent::__construct("Party Member", "What do you want to do with this member?");
+        parent::__construct("§eParty Member", "§dWhat do you want to do with this member?");
     }
 
     protected function onCreation(): void {
@@ -31,7 +31,7 @@ class PartyMemberForm extends SimpleForm {
     }
 
     private function addKickButton(): void {
-        $button = new Button("Kick from the party");
+        $button = new Button("§cKick from the party");
         $button->setSubmitListener(function(Player $player) {
             if(!$this->member->isOnline()) return;
             $party = $this->session->getParty();
@@ -47,7 +47,7 @@ class PartyMemberForm extends SimpleForm {
     }
 
     private function addPromoteButton(): void {
-        $button = new Button("Promote to party leader");
+        $button = new Button("§2Promote to party leader");
         $button->setSubmitListener(function(Player $player) {
             if(!$this->member->isOnline()) return;
             $party = $this->session->getParty();
