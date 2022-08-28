@@ -18,7 +18,7 @@ class PublicPartiesForm extends SimpleForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("Join a public party");
+        parent::__construct("§2Join a public party");
     }
 
     protected function onCreation(): void {
@@ -30,9 +30,9 @@ class PublicPartiesForm extends SimpleForm {
             }
         }
         if(!empty($this->getButtons())) {
-            $this->setHeaderText("Press on the party you want to join!");
+            $this->setHeaderText("§ePress on the party you want to join!");
         } else {
-            $this->setHeaderText("There are no public parties to join! :(");
+            $this->setHeaderText("§cThere are no public parties to join! :(");
         }
         $this->addButton(new GoBackPartyButton());
     }
