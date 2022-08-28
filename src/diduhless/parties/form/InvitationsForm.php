@@ -16,21 +16,21 @@ class InvitationsForm extends SimpleForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("Party Invitations");
+        parent::__construct("§3Party Invitations");
     }
 
     protected function onCreation(): void {
         $invitations = $this->session->getInvitations();
 
         if(!empty($invitations)) {
-            $this->setHeaderText("These are your party invitations:");
+            $this->setHeaderText("§9These are your party invitations:");
             foreach($invitations as $invitation) {
                 $this->addButton(new Button($invitation->getSender()->getUsername() . "'s Party", null, function(Player $player) use ($invitation) {
                     $player->sendForm(new ConfirmInvitationForm($this->session, $invitation));
                 }));
             }
         } else {
-            $this->setHeaderText("You do not have any invitations! :(");
+            $this->setHeaderText("§cYou do not have any invitations! :(");
         }
         $this->addButton(new GoBackPartyButton());
     }
