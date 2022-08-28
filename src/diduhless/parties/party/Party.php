@@ -114,7 +114,7 @@ class Party {
     }
 
     public function sendColoredMessage(Session $session, string $message): void {
-        $this->message("{LIGHT_PURPLE}[Party] {GRAY}" . $session->getUsername() . ": {WHITE}$message");
+        $this->message("{LIGHT_PURPLE}[Party] §l§6»§r§a {GRAY}" . $session->getUsername() . ": {WHITE}$message");
     }
 
     /*
