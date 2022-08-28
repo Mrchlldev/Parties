@@ -11,7 +11,7 @@ use pocketmine\player\Player;
 class GoBackPartyButton extends Button {
 
     public function __construct() {
-        parent::__construct("Go back", null, function(Player $player) {
+        parent::__construct("§cGo back", null, function(Player $player) {
             SessionFactory::getSession($player)->openPartyForm();
         });
     }
