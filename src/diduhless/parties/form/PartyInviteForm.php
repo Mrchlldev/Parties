@@ -23,17 +23,17 @@ class PartyInviteForm extends CustomForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("Invite a player");
+        parent::__construct("§aInvite a player");
     }
 
     protected function onCreation(): void {
-        $dropdown = new Dropdown("Select an online player:");
+        $dropdown = new Dropdown("§1Select an online player:");
         foreach(SessionFactory::getSessions() as $session) {
             if(!$session->hasParty()) {
                 $dropdown->addOption(new Option($session->getUsername(), $session->getUsername()));
             }
         }
-        $this->addElement("input_player", new Input("Write the name of the player:"));
+        $this->addElement("input_player", new Input("§gWrite the name of the player:"));
         if(!empty($dropdown->getOptions())) {
             $this->addElement("dropdown_player", $dropdown);
             $this->is_dropdown = true;
@@ -49,11 +49,11 @@ class PartyInviteForm extends CustomForm {
 
         $target = SessionFactory::getSessionByName($username);
         if($target === null) {
-            $this->session->message("{RED}The player {WHITE}$username {RED}is not online!");
+            $this->session->message("§l§6»§r§c The player {WHITE}$username {RED}is not online!");
         } elseif($target->hasParty()) {
-            $this->session->message($target->getUsername() . " {RED}is already on a party!");
+            $this->session->message("§l§6»§r§c " . $target->getUsername() . "{RED}is already on a party!");
         } elseif($target->hasSessionInvitation($this->session)) {
-            $this->session->message("{RED}You have already invited {WHITE}" . $target->getUsername() . " {RED}to your party!");
+            $this->session->message("§l§6»§r§c {RED}You have already invited {WHITE}" . $target->getUsername() . " {RED}to your party!");
         } elseif(!$this->isCancelled($target)) {
             $target->addInvitation(new Invitation($this->session, $target, $this->session->getParty()->getId()));
         }
