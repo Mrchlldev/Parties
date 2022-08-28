@@ -19,7 +19,7 @@ class ConfirmInvitationForm extends ModalForm {
     public function __construct(Session $session, Invitation $invitation) {
         $this->session = $session;
         $this->invitation = $invitation;
-        parent::__construct("Join a party", "Do you want to join this party?", new ModalOption("Yes"), new ModalOption("No"));
+        parent::__construct("§aJoin a party", "§eDo you want to join this party?", new ModalOption("Yes"), new ModalOption("No"));
     }
 
     protected function onAccept(Player $player): void {
