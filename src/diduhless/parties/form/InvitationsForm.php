@@ -30,7 +30,7 @@ class InvitationsForm extends SimpleForm {
                 }));
             }
         } else {
-            $this->setHeaderText("§cYou do not have any invitations! :(");
+            $this->setHeaderText("§cYou do not have any invitations! ");
         }
         $this->addButton(new GoBackPartyButton());
     }
