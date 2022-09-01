@@ -40,18 +40,18 @@ class Invitation {
         $this->target->removeInvitation($this);
 
         if($this->target->hasParty()) {
-            $this->target->message("§l§6»§r§c RED}You cannot be in a party to do this!");
+            $this->target->message(" §l§6»§r§c RED}You cannot be in a party to do this!");
             return;
         } elseif(!$this->sender->isOnline()) {
-            $this->target->message("§l§6»§r§c {RED}You could not join the party because the party leader is not online!");
+            $this->target->message(" §l§6»§r§c {RED}You could not join the party because the party leader is not online!");
             return;
         }
         $party = $this->sender->getParty();
         if($party === null or $party->getId() !== $this->partyId) {
-            $this->target->message("§l§6»§r§a {RED}You could not join the party because the party leader has left the party!");
+            $this->target->message(" §l§6»§r§a {RED}You could not join the party because the party leader has left the party!");
             return;
         } elseif($party->isFull()) {
-            $this->target->message("§l§6»§r§a {RED}You could not join this party because it is full!");
+            $this->target->message(" §l§6»§r§a {RED}You could not join this party because it is full!");
         }
 
         $event = new PartyJoinEvent($party, $this->target);
