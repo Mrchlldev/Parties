@@ -49,11 +49,11 @@ class PartyInviteForm extends CustomForm {
 
         $target = SessionFactory::getSessionByName($username);
         if($target === null) {
-            $this->session->message("§l§6»§r§c The player {WHITE}$username {RED}is not online!");
+            $this->session->message(" §l§6»§r§c The player {WHITE}$username {RED}is not online!");
         } elseif($target->hasParty()) {
-            $this->session->message("§l§6»§r§c " . $target->getUsername() . "{RED}is already on a party!");
+            $this->session->message(" §l§6»§r§c " . $target->getUsername() . "{RED}is already on a party!");
         } elseif($target->hasSessionInvitation($this->session)) {
-            $this->session->message("§l§6»§r§c {RED}You have already invited {WHITE}" . $target->getUsername() . " {RED}to your party!");
+            $this->session->message(" §l§6»§r§c {RED}You have already invited {WHITE}" . $target->getUsername() . " {RED}to your party!");
         } elseif(!$this->isCancelled($target)) {
             $target->addInvitation(new Invitation($this->session, $target, $this->session->getParty()->getId()));
         }
