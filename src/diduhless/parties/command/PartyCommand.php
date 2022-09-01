@@ -17,7 +17,7 @@ class PartyCommand extends SessionCommand {
             if($session->hasParty()) {
                 $session->getParty()->sendColoredMessage($session, implode(" ", $args));
             } else {
-                $session->message("§l§6»§r§c You must be in a party to talk in the party chat!");
+                $session->message(" §l§6»§r§c You must be in a party to talk in the party chat!");
             }
         } else {
             $session->openPartyForm();
