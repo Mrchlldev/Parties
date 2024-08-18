@@ -10,6 +10,7 @@ class PartyChatCommand extends SessionCommand {
 
     public function __construct() {
         parent::__construct("pchat", "Toggles the party chat");
+        $this->setPermission("parties.chat");
     }
 
     public function onCommand(Session $session, array $args) {
