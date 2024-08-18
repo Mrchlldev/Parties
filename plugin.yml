@@ -5,3 +5,11 @@ website: https://github.com/Diduhless
 author: Didah (@Diduhless)
 version: 2.0.2-BETA
 api: 5.0.0
+
+permissions:
+  parties.use:
+    default: true
+  parties.command:
+    default: op
+  parties.create:
+    default: op
