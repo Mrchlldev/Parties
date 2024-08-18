@@ -44,13 +44,13 @@ class PartyMenuForm extends SimpleForm {
     }
 
     public function addPublicPartiesButton(): void {
-        $this->addButton(new Button("§2Join a public party", null, function(Player $player) {
+        $this->addButton(new Button("Join a public party", null, function(Player $player) {
             $player->sendForm(new PublicPartiesForm($this->session));
         }));
     }
 
     public function addInvitationsButton(): void {
-        $this->addButton(new Button("§eView invitations [" . count($this->session->getInvitations()) . "]", null, function(Player $player) {
+        $this->addButton(new Button("View invitations (" . count($this->session->getInvitations()) . ")", null, function(Player $player) {
             $player->sendForm(new InvitationsForm($this->session));
         }));
     }
