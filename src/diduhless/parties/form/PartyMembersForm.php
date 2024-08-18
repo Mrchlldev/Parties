@@ -16,7 +16,7 @@ class PartyMembersForm extends SimpleForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("§gParty Members", "§1Current members in your party:");
+        parent::__construct("Party", "Current members in your party:");
     }
 
     protected function onCreation(): void {
