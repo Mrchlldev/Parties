@@ -7,9 +7,9 @@ version: 2.0.2-BETA
 api: 5.0.0
 
 permissions:
-  parties.use:
-    default: true
+  parties.chat:
+    default: op
   parties.command:
     default: op
-  parties.create:
+  parties.session:
     default: op
