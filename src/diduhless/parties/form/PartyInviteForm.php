@@ -23,17 +23,17 @@ class PartyInviteForm extends CustomForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("§aInvite a player");
+        parent::__construct("Party");
     }
 
     protected function onCreation(): void {
-        $dropdown = new Dropdown("§1Select an online player:");
+        $dropdown = new Dropdown("Select an online player:");
         foreach(SessionFactory::getSessions() as $session) {
             if(!$session->hasParty()) {
                 $dropdown->addOption(new Option($session->getUsername(), $session->getUsername()));
             }
         }
-        $this->addElement("input_player", new Input("§gWrite the name of the player:"));
+        $this->addElement("input_player", new Input("Write the name of the player:"));
         if(!empty($dropdown->getOptions())) {
             $this->addElement("dropdown_player", $dropdown);
             $this->is_dropdown = true;
