@@ -18,7 +18,7 @@ class PublicPartiesForm extends SimpleForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("§2Join a public party");
+        parent::__construct("Party");
     }
 
     protected function onCreation(): void {
