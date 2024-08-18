@@ -10,7 +10,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerCommandPreprocessEvent;
+use pocketmine\event\server\CommandEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\player\PlayerTransferEvent;
@@ -77,11 +77,11 @@ class ConfigurationListener implements Listener {
         }
     }
 
-    public function onCommandPreprocess(PlayerCommandPreprocessEvent $event): void {
+    public function onCommandPreprocess(CommandEvent $event): void {
         if(!ConfigGetter::areLeaderCommandsEnabled()) {
             return;
         }
-        $command = str_replace("/", "", $event->getMessage());
+        $command = str_replace("/", "", $event->getCommand());
         if(!in_array($command, ConfigGetter::getSelectedCommands())) {
             return;
         }
