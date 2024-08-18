@@ -18,7 +18,7 @@ class PartyMenuForm extends SimpleForm {
 
     public function __construct(Session $session) {
         $this->session = $session;
-        parent::__construct("§l§6Party Menu", "§cYou do not have a party! Create a party or accept an invitation to join a party.");
+        parent::__construct("Party", "§cYou do not have a party! Create a party or accept an invitation to join a party.");
     }
 
     protected function onCreation(): void {
@@ -28,7 +28,7 @@ class PartyMenuForm extends SimpleForm {
     }
 
     private function addCreatePartyButton(): void {
-        $button = new Button("§aCreate a party");
+        $button = new Button("Create a party");
         $button->setSubmitListener(function(Player $player) {
             $party = new Party(uniqid(), $this->session);
             $event = new PartyCreateEvent($party, $this->session);
