@@ -10,6 +10,7 @@ class PartyCommand extends SessionCommand {
 
     public function __construct() {
         parent::__construct("party", "Opens the party menu or sends a message to the party chat", null, ["p"]);
+        $this->setPermission("parties.command");
     }
 
     public function onCommand(Session $session, array $args) {
