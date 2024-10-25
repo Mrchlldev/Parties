@@ -6,7 +6,4 @@ projects:
   Parties:
     path: ""
     icon: "icon.png"
-    libs:
-      - src: EasyUI/EasyUI
-        version: ^1.0.2
 ...
