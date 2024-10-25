@@ -33,8 +33,9 @@ class Parties extends PluginBase {
     protected function onEnable(): void {
         foreach (self::VIRIONS as $virion => $class){
             if(!class_exists($class){
-               $this->getServer()->getLogger()->error($virion . " not found! please download " . $virions . " from poggit!");
-               $this->getServer()->getPluginManager()->disablePlugin($this);
+                $this->getServer()->getLogger()->error($virion . " not found! please download " . $virions . " from poggit!");
+                $this->getServer()->getPluginManager()->disablePlugin($this);
+                return;
             }
         }
         $this->registerEvents(new SessionListener());
