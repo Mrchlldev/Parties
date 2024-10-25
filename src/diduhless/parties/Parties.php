@@ -15,10 +15,15 @@ use diduhless\parties\listener\SessionListener;
 use pocketmine\command\Command;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use EasyUI\EasyUI;
 
 class Parties extends PluginBase {
 
     static private self $instance;
+
+    public const VIRIONS = [
+        "EasyUI" => EasyUI::class
+    ];
 
     protected function onLoad(): void {
         self::$instance = $this;
@@ -26,6 +31,12 @@ class Parties extends PluginBase {
     }
 
     protected function onEnable(): void {
+        foreach (self::VIRIONS as $virion => $class){
+            if(!class_exists($class){
+               $this->getServer()->getLogger()->error($virion . " not found! please download " . $virions . " from poggit!");
+               $this->getServer()->getPluginManager()->disablePlugin($this);
+            }
+        }
         $this->registerEvents(new SessionListener());
         $this->registerEvents(new PartyChatListener());
         $this->registerEvents(new PartyEventListener());
